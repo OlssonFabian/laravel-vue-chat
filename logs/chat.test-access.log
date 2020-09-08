@@ -1,0 +1,3 @@
+127.0.0.1 - - [08/Sep/2020:12:56:37 +0200] "GET / HTTP/1.1" 301 225 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36"
+127.0.0.1 - - [08/Sep/2020:12:56:37 +0200] "GET / HTTP/1.1" 200 2426 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36"
+127.0.0.1 - - [08/Sep/2020:12:56:38 +0200] "GET /favicon.ico HTTP/1.1" 200 - "https://chat.test/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36"
