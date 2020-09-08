@@ -30,11 +30,11 @@ $factory->define(User::class, function (Faker $faker) {
 
 $factory->define(App\Message::class, function (Faker $faker) {
     do {
-        $from = range(1, 15);
-        $to = range(1, 15);
+        $from = rand(1, 15);
+        $to = rand(1, 15);
     } while ($from == $to);
     return [
-        'from' => $faker->name,
+        'from' => $from,
         'to' => $to,
         'text' => $faker->sentence,
     ];
