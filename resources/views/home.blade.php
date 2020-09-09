@@ -6,7 +6,7 @@
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-header">{{ __('Fab Messenger') }}</div>
-
+                    <chat-app :user="{{ auth()->user()}}"></chat-app>
                 <div class="card-body" id="app">
                 </div>
             </div>
