@@ -1,7 +1,7 @@
 <template>
     <div class="chat-app">
         <Conversation :contact="selectedContact" :messages="messages"/>
-        <Contactsllist :contacts="contacts"/>
+        <ContactsList :contacts="contacts"/>
     </div>
 </template>
 
