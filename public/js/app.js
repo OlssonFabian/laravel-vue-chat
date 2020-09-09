@@ -1914,9 +1914,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      selectedContact: null,
+      messages: [],
+      contacts: []
+    };
+  },
   mounted: function mounted() {
-    console.log('component mounted');
+    var _this = this;
+
+    axios.get('/contacts').then(function (response) {
+      _this.contacts = response.data;
+    });
   }
 });
 
@@ -38147,7 +38159,18 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "chat-app" })
+  return _c(
+    "div",
+    { staticClass: "chat-app" },
+    [
+      _c("Conversation", {
+        attrs: { contact: _vm.selectedContact, messages: _vm.messages }
+      }),
+      _vm._v(" "),
+      _c("Contactsllist", { attrs: { contacts: _vm.contacts } })
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
