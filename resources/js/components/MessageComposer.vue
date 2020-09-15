@@ -6,21 +6,20 @@
 
 <script>
     export default {
-            data(){
-                return {
-                    message: ''
-                }
-            },
-            methods: {
+        data() {
+            return {
+                message: ''
+            };
+        },
+        methods: {
             send(e) {
                 e.preventDefault();
 
-                if (this.message =='') {
+                if (this.message == '') {
                     return;
                 }
-
-                this.$emit('send', this.message); //sending message.
-                this.message = ''; //clear the textarea after send.
+                this.$emit('send', this.message);
+                this.message = '';
             }
         }
     }
