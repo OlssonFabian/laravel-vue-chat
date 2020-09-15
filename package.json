@@ -26,6 +26,8 @@
     },
     "dependencies": {
         "babel-loader": "^8.1.0",
+        "laravel-echo": "^1.8.1",
+        "pusher-js": "^7.0.0",
         "vue": "^2.6.12",
         "vue-loader": "^15.9.3"
     }
