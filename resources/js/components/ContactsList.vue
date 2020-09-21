@@ -1,5 +1,5 @@
 <template>
-    <div class="contacts-list">
+    <div class="contacts-list d-sm-none d-md-flex">
         <ul>
             <li v-for="(contact, index) in contacts" :key="contact.id" @click="selectContact(index, contact)" :class="{ 'selected': index == selected}">
                 <div class="avatar">
@@ -39,6 +39,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+/* Smartphones ----------- */
+@media only screen and (max-width: 760px) {
+    .contacts-list{
+        }
+}
 
 .contacts-list {
     flex: 2;
