@@ -40,10 +40,6 @@ export default {
 
 <style lang="scss" scoped>
 /* Smartphones ----------- */
-@media only screen and (max-width: 760px) {
-    .contacts-list{
-        }
-}
 
 .contacts-list {
     flex: 2;
@@ -53,6 +49,7 @@ export default {
     border-left: 1px solid #a6a6a6;
 
     ul {
+        width: 100%;
         list-style-type: none;
         padding-left: 0;
         li {
