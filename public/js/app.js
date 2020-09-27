@@ -7336,7 +7336,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".feed[data-v-0ecf4eaa] {\n  background: #f0f0f0;\n  height: 100%;\n  max-height: 470px;\n  overflow: scroll;\n}\n.feed ul[data-v-0ecf4eaa] {\n  list-style-type: none;\n  padding: 5px;\n}\n.feed ul li.message[data-v-0ecf4eaa] {\n  margin: 10px 0;\n  width: 100%;\n}\n.feed ul li.message .text[data-v-0ecf4eaa] {\n  max-width: 200px;\n  border-radius: 5px;\n  padding: 12px;\n  display: inline-block;\n}\n.feed ul li.message.received[data-v-0ecf4eaa] {\n  text-align: right;\n}\n.feed ul li.message.received .text[data-v-0ecf4eaa] {\n  background: #b2b2b2;\n}\n.feed ul li.message.sent[data-v-0ecf4eaa] {\n  text-align: left;\n}\n.feed ul li.message.sent .text[data-v-0ecf4eaa] {\n  background: #81c4f9;\n}", ""]);
+exports.push([module.i, ".feed[data-v-0ecf4eaa] {\n  background: #f0f0f0;\n  height: 100%;\n  max-height: 470px;\n  overflow: scroll;\n}\n.feed ul[data-v-0ecf4eaa] {\n  list-style-type: none;\n  padding: 5px;\n}\n.feed ul li.message[data-v-0ecf4eaa] {\n  margin: 10px 0;\n  width: 100%;\n}\n.feed ul li.message .text[data-v-0ecf4eaa] {\n  max-width: 200px;\n  border-radius: 5px;\n  padding: 12px;\n  display: inline-block;\n}\n.feed ul li.message.received[data-v-0ecf4eaa] {\n  text-align: right;\n}\n.feed ul li.message.received .text[data-v-0ecf4eaa] {\n  background: white;\n}\n.feed ul li.message.sent[data-v-0ecf4eaa] {\n  text-align: left;\n}\n.feed ul li.message.sent .text[data-v-0ecf4eaa] {\n  background: #81c4f9;\n}", ""]);
 
 // exports
 
@@ -45388,41 +45388,47 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "contacts-list d-sm-none d-md-flex" }, [
-    _c(
-      "ul",
-      _vm._l(_vm.contacts, function(contact, index) {
-        return _c(
-          "li",
-          {
-            key: contact.id,
-            class: { selected: index == _vm.selected },
-            on: {
-              click: function($event) {
-                return _vm.selectContact(index, contact)
+  return _c(
+    "div",
+    { staticClass: "contacts-list d-none d-md-none d-lg-flex" },
+    [
+      _c(
+        "ul",
+        _vm._l(_vm.contacts, function(contact, index) {
+          return _c(
+            "li",
+            {
+              key: contact.id,
+              class: { selected: index == _vm.selected },
+              on: {
+                click: function($event) {
+                  return _vm.selectContact(index, contact)
+                }
               }
-            }
-          },
-          [
-            _c("div", { staticClass: "avatar" }, [
-              _c("img", {
-                attrs: { src: contact.profile_picture, alt: "contact.name" }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "contact" }, [
-              _c("p", { staticClass: "name" }, [
-                _vm._v(" " + _vm._s(contact.name))
+            },
+            [
+              _c("div", { staticClass: "avatar" }, [
+                _c("img", {
+                  attrs: { src: contact.profile_picture, alt: "contact.name" }
+                })
               ]),
               _vm._v(" "),
-              _c("p", { staticClass: "email" }, [_vm._v(_vm._s(contact.email))])
-            ])
-          ]
-        )
-      }),
-      0
-    )
-  ])
+              _c("div", { staticClass: "contact" }, [
+                _c("p", { staticClass: "name" }, [
+                  _vm._v(" " + _vm._s(contact.name))
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "email" }, [
+                  _vm._v(_vm._s(contact.email))
+                ])
+              ])
+            ]
+          )
+        }),
+        0
+      )
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -45552,7 +45558,7 @@ var render = function() {
                 key: message.id,
                 class:
                   "message" +
-                  (message.to == _vm.contact.id ? " sent" : "reccieved")
+                  (message.to == _vm.contact.id ? " sent" : " received")
               },
               [
                 _c("div", { staticClass: "text" }, [

@@ -1,5 +1,5 @@
 <template>
-    <div class="contacts-list d-sm-none d-md-flex">
+    <div class="contacts-list d-none d-md-none d-lg-flex">
         <ul>
             <li v-for="(contact, index) in contacts" :key="contact.id" @click="selectContact(index, contact)" :class="{ 'selected': index == selected}">
                 <div class="avatar">
