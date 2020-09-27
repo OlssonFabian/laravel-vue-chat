@@ -662,3 +662,5 @@
 127.0.0.1 - - [27/Sep/2020:18:55:29 +0200] "GET /favicon.ico HTTP/1.1" 200 - "https://chat.test/home" "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1"
 127.0.0.1 - - [27/Sep/2020:18:55:38 +0200] "GET /css/app.css HTTP/1.1" 304 - "https://chat.test/home" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36"
 127.0.0.1 - - [27/Sep/2020:18:55:38 +0200] "GET /js/vuetify.js.map HTTP/1.1" 404 1552 "-" "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1"
+127.0.0.1 - - [27/Sep/2020:18:57:11 +0200] "GET /conversation/6 HTTP/1.1" 200 94566 "https://chat.test/home" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36"
+127.0.0.1 - - [27/Sep/2020:18:57:36 +0200] "GET /js/vuetify.js.map HTTP/1.1" 404 1552 "-" "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1"
