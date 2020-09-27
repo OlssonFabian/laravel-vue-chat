@@ -1,11 +1,6 @@
 <template>
     <div class="conversation">
         <h1 class="d-none d-md-flex d-lg-flex"> {{ contact ? contact.name: 'Select a Contact' }}</h1>
-        <div class="contact-toggler d-lg-none d-xl-none">
-            <v-btn elevation="2" large>
-                {{ contact ? contact.name: 'Select a Contact' }}
-            </v-btn>
-        </div>
         <messageFeed :contact="contact" :messages="messages"/>
         <messageComposer @send="sendMessage" />
     </div>

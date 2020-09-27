@@ -1,5 +1,10 @@
 <template>
-    <div class="chat-app">
+    <div class="chat-app d-flex flex-column flex-md-column flex-lg-row">
+        <div class="contact-toggler d-lg-none d-xl-none">
+            <v-btn block elevation="2">
+                Choose contact
+            </v-btn>
+        </div>
         <Conversation :contact="selectedContact" :messages="messages" @new="saveNewMessage"/>
         <ContactsList :contacts="contacts" @selected="startConversationWith"/>
     </div>
@@ -58,6 +63,10 @@
 
 <style lang="scss" scoped>
 .chat-app {
-    display: flex;
+    // display: flex;
+    // flex-direction: column;
+    .contact-toggler{
+        // display: inline-flex;
+    }
 }
 </style>

@@ -1917,6 +1917,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2030,11 +2035,6 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _MessageComposer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MessageComposer */ "./resources/js/components/MessageComposer.vue");
 /* harmony import */ var _MessageFeed__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MessageFeed */ "./resources/js/components/MessageFeed.vue");
-//
-//
-//
-//
-//
 //
 //
 //
@@ -7246,7 +7246,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".chat-app[data-v-1da0bc8e] {\n  display: flex;\n}", ""]);
+exports.push([module.i, "", ""]);
 
 // exports
 
@@ -45356,8 +45356,19 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "chat-app" },
+    { staticClass: "chat-app d-flex flex-column flex-md-column flex-lg-row" },
     [
+      _c(
+        "div",
+        { staticClass: "contact-toggler d-lg-none d-xl-none" },
+        [
+          _c("v-btn", { attrs: { block: "", elevation: "2" } }, [
+            _vm._v("\n            Choose contact\n        ")
+          ])
+        ],
+        1
+      ),
+      _vm._v(" "),
       _c("Conversation", {
         attrs: { contact: _vm.selectedContact, messages: _vm.messages },
         on: { new: _vm.saveNewMessage }
@@ -45466,21 +45477,6 @@ var render = function() {
           " " + _vm._s(_vm.contact ? _vm.contact.name : "Select a Contact")
         )
       ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "contact-toggler d-lg-none d-xl-none" },
-        [
-          _c("v-btn", { attrs: { elevation: "2", large: "" } }, [
-            _vm._v(
-              "\n            " +
-                _vm._s(_vm.contact ? _vm.contact.name : "Select a Contact") +
-                "\n        "
-            )
-          ])
-        ],
-        1
-      ),
       _vm._v(" "),
       _c("messageFeed", {
         attrs: { contact: _vm.contact, messages: _vm.messages }
