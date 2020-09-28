@@ -1,7 +1,7 @@
 <template>
     <div class="chat-app d-flex flex-column flex-md-column flex-lg-row">
         <div class="contact-toggler d-lg-none d-xl-none">
-            <v-btn block elevation="2">
+            <v-btn block elevation="2" @click="toggleForContacts">
                 Choose contact
             </v-btn>
         </div>
@@ -25,6 +25,7 @@
                 selectedContact: null,
                 messages: [],
                 contacts: [],
+                showContacts: false,
             };
         },
         mounted() {
@@ -55,7 +56,12 @@
                     this.saveNewMessage(message);
                     return;
                 }
-            }
+            },
+            toggleForContacts: function() {
+                this.showContacts = !this.showContacts;
+                    // some code to filter users
+                console.log(this.showContacts);
+            },
         },
         components: {Conversation, ContactsList}
     }
@@ -63,10 +69,8 @@
 
 <style lang="scss" scoped>
 .chat-app {
-    // display: flex;
-    // flex-direction: column;
-    .contact-toggler{
-        // display: inline-flex;
+    .visible{
+        display: flex !important;
     }
 }
 </style>

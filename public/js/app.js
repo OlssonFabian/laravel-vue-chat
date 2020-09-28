@@ -1935,7 +1935,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       selectedContact: null,
       messages: [],
-      contacts: []
+      contacts: [],
+      showContacts: false
     };
   },
   mounted: function mounted() {
@@ -1967,6 +1968,11 @@ __webpack_require__.r(__webpack_exports__);
         this.saveNewMessage(message);
         return;
       }
+    },
+    toggleForContacts: function toggleForContacts() {
+      this.showContacts = !this.showContacts; // some code to filter users
+
+      console.log(this.showContacts);
     }
   },
   components: {
@@ -1986,6 +1992,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ChatApp_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ChatApp.vue */ "./resources/js/components/ChatApp.vue");
 //
 //
 //
@@ -2002,6 +2009,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     contacts: {
@@ -7246,7 +7254,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".chat-app .visible[data-v-1da0bc8e] {\n  display: flex !important;\n}", ""]);
 
 // exports
 
@@ -45362,9 +45370,14 @@ var render = function() {
         "div",
         { staticClass: "contact-toggler d-lg-none d-xl-none" },
         [
-          _c("v-btn", { attrs: { block: "", elevation: "2" } }, [
-            _vm._v("\n            Choose contact\n        ")
-          ])
+          _c(
+            "v-btn",
+            {
+              attrs: { block: "", elevation: "2" },
+              on: { click: _vm.toggleForContacts }
+            },
+            [_vm._v("\n            Choose contact\n        ")]
+          )
         ],
         1
       ),
@@ -45406,7 +45419,10 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "contacts-list d-none d-md-none d-lg-flex" },
+    {
+      staticClass: "contacts-list d-none d-md-none d-lg-flex",
+      class: { "d-flex": _vm.showContacts }
+    },
     [
       _c(
         "ul",

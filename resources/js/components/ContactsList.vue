@@ -1,5 +1,5 @@
 <template>
-    <div class="contacts-list d-none d-md-none d-lg-flex">
+    <div class="contacts-list d-none d-md-none d-lg-flex" v-bind:class="{'d-flex' :showContacts}">
         <ul>
             <li v-for="(contact, index) in contacts" :key="contact.id" @click="selectContact(index, contact)" :class="{ 'selected': index == selected}">
                 <div class="avatar">
@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import showContacts from './ChatApp.vue'
 export default {
     props: {
         contacts: {
