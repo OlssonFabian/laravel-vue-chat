@@ -3,7 +3,7 @@
         <h1 class="d-none d-md-flex d-lg-flex"> {{ contact ? contact.name: 'Select a Contact' }}</h1>
         <messageFeed :contact="contact" :messages="messages"/>
         <messageComposer @send="sendMessage" />
-        <div class="avatar" v-if="contact">
+        <div class="avatar d-lg-none" v-if="contact">
             <v-img max-height="80"
                     max-width="80"
                     :src="contact.profile_picture"

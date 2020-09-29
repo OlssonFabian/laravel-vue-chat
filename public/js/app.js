@@ -45572,7 +45572,7 @@ var render = function() {
       _vm.contact
         ? _c(
             "div",
-            { staticClass: "avatar" },
+            { staticClass: "avatar d-lg-none" },
             [
               _c("v-img", {
                 staticClass: "avatar-image",
