@@ -8,6 +8,18 @@
         <Conversation :contact="selectedContact" :messages="messages" @new="saveNewMessage"/>
         <ContactsList class="contacts-list flex-row d-none d-md-none d-lg-flex" :contacts="contacts" @selected="startConversationWith"/>
         <v-overlay :z-index="zIndex" :color="color" :opacity="opacity" :value="showContacts" class="d-flex flex-row d-md-none d-md-flex d-lg-none">
+            <v-btn
+            color="error"
+            fab
+            medium
+            dark
+            right
+            top
+            absolute
+            @click="toggleForContacts"
+            >
+            <v-icon>mdi-close</v-icon>
+            </v-btn>
             <ContactsList class="d-flex d-md-flex d-lg-none"
                         :contacts="contacts"
                         @selected="startConversationWith"

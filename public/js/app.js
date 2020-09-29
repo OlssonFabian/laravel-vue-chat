@@ -1928,6 +1928,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -45415,6 +45427,24 @@ var render = function() {
           }
         },
         [
+          _c(
+            "v-btn",
+            {
+              attrs: {
+                color: "error",
+                fab: "",
+                medium: "",
+                dark: "",
+                right: "",
+                top: "",
+                absolute: ""
+              },
+              on: { click: _vm.toggleForContacts }
+            },
+            [_c("v-icon", [_vm._v("mdi-close")])],
+            1
+          ),
+          _vm._v(" "),
           _c("ContactsList", {
             staticClass: "d-flex d-md-flex d-lg-none",
             attrs: { contacts: _vm.contacts },
@@ -101559,7 +101589,12 @@ Vue.use(vuetify__WEBPACK_IMPORTED_MODULE_0___default.a);
 Vue.component('chat-app', __webpack_require__(/*! ./components/ChatApp.vue */ "./resources/js/components/ChatApp.vue")["default"]);
 var app = new Vue({
   el: '#app',
-  vuetify: new vuetify__WEBPACK_IMPORTED_MODULE_0___default.a()
+  vuetify: new vuetify__WEBPACK_IMPORTED_MODULE_0___default.a({
+    icons: {
+      iconfont: 'mdiSvg' // 'mdi' || 'mdiSvg' || 'md' || 'fa' || 'fa4' || 'faSvg'
+
+    }
+  })
 });
 
 /***/ }),
