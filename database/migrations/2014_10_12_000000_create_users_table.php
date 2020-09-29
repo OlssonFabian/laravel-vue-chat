@@ -22,6 +22,11 @@ class CreateUsersTable extends Migration
             $table->string('profile_picture')->nullable();
             $table->rememberToken();
             $table->timestamps();
+            $table->string('about');
+            $table->string('company');
+            $table->string('field');
+            $table->string('jobTitle');
+            $table->integer('rating');
         });
     }
 
