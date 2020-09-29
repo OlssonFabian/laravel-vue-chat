@@ -2014,7 +2014,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _ChatApp_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ChatApp.vue */ "./resources/js/components/ChatApp.vue");
 //
 //
 //
@@ -2031,7 +2030,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     contacts: {
@@ -2065,6 +2063,15 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _MessageComposer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MessageComposer */ "./resources/js/components/MessageComposer.vue");
 /* harmony import */ var _MessageFeed__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MessageFeed */ "./resources/js/components/MessageFeed.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -7314,7 +7321,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".conversation[data-v-63f956ee] {\n  flex: 5;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n}\n.conversation h1[data-v-63f956ee] {\n  font-size: 20px;\n  padding: 10px;\n  margin: 0;\n  border-bottom: 1px dashed lightgray;\n}", ""]);
+exports.push([module.i, ".conversation[data-v-63f956ee] {\n  flex: 5;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n}\n.conversation h1[data-v-63f956ee] {\n  font-size: 20px;\n  padding: 10px;\n  margin: 0;\n  border-bottom: 1px dashed lightgray;\n}\n.conversation .avatar[data-v-63f956ee] {\n  flex: 1;\n  display: flex;\n  position: absolute;\n  top: 0;\n  right: 0;\n  align-items: center;\n}\n.conversation .avatar-image[data-v-63f956ee] {\n  border-radius: 50%;\n}", ""]);
 
 // exports
 
@@ -45481,7 +45488,10 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "contacts-list d-none d-md-none d-lg-flex" },
+    {
+      staticClass: "contacts-list d-none d-md-none d-lg-flex",
+      class: { "d-flex": _vm.showContacts }
+    },
     [
       _c(
         "ul",
@@ -45557,7 +45567,26 @@ var render = function() {
         attrs: { contact: _vm.contact, messages: _vm.messages }
       }),
       _vm._v(" "),
-      _c("messageComposer", { on: { send: _vm.sendMessage } })
+      _c("messageComposer", { on: { send: _vm.sendMessage } }),
+      _vm._v(" "),
+      _vm.contact
+        ? _c(
+            "div",
+            { staticClass: "avatar" },
+            [
+              _c("v-img", {
+                staticClass: "avatar-image",
+                attrs: {
+                  "max-height": "80",
+                  "max-width": "80",
+                  src: _vm.contact.profile_picture,
+                  alt: "contact.name"
+                }
+              })
+            ],
+            1
+          )
+        : _vm._e()
     ],
     1
   )

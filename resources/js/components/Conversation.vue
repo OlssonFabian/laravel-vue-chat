@@ -3,6 +3,15 @@
         <h1 class="d-none d-md-flex d-lg-flex"> {{ contact ? contact.name: 'Select a Contact' }}</h1>
         <messageFeed :contact="contact" :messages="messages"/>
         <messageComposer @send="sendMessage" />
+        <div class="avatar" v-if="contact">
+            <v-img max-height="80"
+                    max-width="80"
+                    :src="contact.profile_picture"
+                    alt="contact.name"
+                    class="avatar-image"
+            >
+            </v-img>
+        </div>
     </div>
 </template>
 
@@ -50,6 +59,17 @@ export default {
         padding: 10px;
         margin: 0;
         border-bottom: 1px dashed lightgray;
+    }
+    .avatar {
+        flex: 1;
+        display: flex;
+        position: absolute;
+        top: 0;
+        right: 0;
+        align-items: center;
+        &-image{
+            border-radius: 50%;
+        }
     }
 }
 </style>
