@@ -1922,6 +1922,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1936,7 +1942,10 @@ __webpack_require__.r(__webpack_exports__);
       selectedContact: null,
       messages: [],
       contacts: [],
-      showContacts: false
+      showContacts: false,
+      zIndex: 5,
+      opacity: 0.9,
+      color: 'white'
     };
   },
   mounted: function mounted() {
@@ -1959,6 +1968,7 @@ __webpack_require__.r(__webpack_exports__);
         _this2.messages = response.data;
         _this2.selectedContact = contact;
       });
+      this.toggleForContacts();
     },
     saveNewMessage: function saveNewMessage(text) {
       this.messages.push(text);
@@ -7254,7 +7264,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".chat-app .visible[data-v-1da0bc8e] {\n  display: flex !important;\n}", ""]);
+exports.push([module.i, ".chat-app .contacts-list[data-v-1da0bc8e] {\n  color: black;\n  width: 100vw;\n}", ""]);
 
 // exports
 
@@ -45388,9 +45398,31 @@ var render = function() {
       }),
       _vm._v(" "),
       _c("ContactsList", {
+        staticClass: "contacts-list flex-row d-none d-md-none d-lg-flex",
         attrs: { contacts: _vm.contacts },
         on: { selected: _vm.startConversationWith }
-      })
+      }),
+      _vm._v(" "),
+      _c(
+        "v-overlay",
+        {
+          staticClass: "d-flex flex-row d-md-none d-md-flex d-lg-none",
+          attrs: {
+            "z-index": _vm.zIndex,
+            color: _vm.color,
+            opacity: _vm.opacity,
+            value: _vm.showContacts
+          }
+        },
+        [
+          _c("ContactsList", {
+            staticClass: "d-flex d-md-flex d-lg-none",
+            attrs: { contacts: _vm.contacts },
+            on: { selected: _vm.startConversationWith }
+          })
+        ],
+        1
+      )
     ],
     1
   )
@@ -45419,10 +45451,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    {
-      staticClass: "contacts-list d-none d-md-none d-lg-flex",
-      class: { "d-flex": _vm.showContacts }
-    },
+    { staticClass: "contacts-list d-none d-md-none d-lg-flex" },
     [
       _c(
         "ul",

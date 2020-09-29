@@ -6,7 +6,13 @@
             </v-btn>
         </div>
         <Conversation :contact="selectedContact" :messages="messages" @new="saveNewMessage"/>
-        <ContactsList :contacts="contacts" @selected="startConversationWith"/>
+        <ContactsList class="contacts-list flex-row d-none d-md-none d-lg-flex" :contacts="contacts" @selected="startConversationWith"/>
+        <v-overlay :z-index="zIndex" :color="color" :opacity="opacity" :value="showContacts" class="d-flex flex-row d-md-none d-md-flex d-lg-none">
+            <ContactsList class="d-flex d-md-flex d-lg-none"
+                        :contacts="contacts"
+                        @selected="startConversationWith"
+            />
+        </v-overlay>
     </div>
 </template>
 
@@ -26,6 +32,9 @@
                 messages: [],
                 contacts: [],
                 showContacts: false,
+                zIndex: 5,
+                opacity: 0.9,
+                color: 'white',
             };
         },
         mounted() {
@@ -47,6 +56,7 @@
                     this.messages = response.data
                     this.selectedContact = contact
                 })
+                this.toggleForContacts();
             },
             saveNewMessage(text) {
                 this.messages.push(text);
@@ -69,8 +79,9 @@
 
 <style lang="scss" scoped>
 .chat-app {
-    .visible{
-        display: flex !important;
+    .contacts-list{
+        color: black;
+        width: 100vw;
     }
 }
 </style>
