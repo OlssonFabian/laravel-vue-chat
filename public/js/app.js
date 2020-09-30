@@ -2030,6 +2030,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     contacts: {
@@ -45515,12 +45519,37 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "contact" }, [
-                _c("p", { staticClass: "name" }, [
-                  _vm._v(" " + _vm._s(contact.name))
-                ]),
+                _c(
+                  "p",
+                  { staticClass: "name" },
+                  [
+                    _vm._v(
+                      " " + _vm._s(contact.name) + "\n                    "
+                    ),
+                    _vm._l(contact.rating, function(value) {
+                      return _c(
+                        "span",
+                        { key: value },
+                        [
+                          _c(
+                            "v-icon",
+                            { attrs: { size: "15", color: "yellow" } },
+                            [_vm._v("mdi-star")]
+                          )
+                        ],
+                        1
+                      )
+                    })
+                  ],
+                  2
+                ),
                 _vm._v(" "),
                 _c("p", { staticClass: "email" }, [
                   _vm._v(_vm._s(contact.email))
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "company" }, [
+                  _vm._v("@" + _vm._s(contact.company))
                 ])
               ])
             ]
