@@ -24,11 +24,12 @@ export default {
         contacts: {
             type: Array,
             default: []
-        }
+        },
     },
     data(){
         return {
-            selected: 0
+            selected: 0,
+            showContacts: false,
         };
     },
     methods: {

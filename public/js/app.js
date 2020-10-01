@@ -2043,7 +2043,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      selected: 0
+      selected: 0,
+      showContacts: false
     };
   },
   methods: {
