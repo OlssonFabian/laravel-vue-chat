@@ -4,9 +4,12 @@
             <v-btn block elevation="2" @click="toggleForContacts">
                 Choose contact
             </v-btn >
-            <v-btn class="selected-contact" v-if="selectedContact" small elevation="1" @click="toggleForContacts">
+            <v-btn class="selected-contact" v-if="selectedContact" small elevation="1" @click="toggleForContactProfile">
                 <v-icon>mdi-account</v-icon> {{selectedContact.name}}
             </v-btn>
+        </div>
+        <div v-if="showContactProfile" class="contact-profile">
+            <ProfileInfo :contact="selectedContact" />
         </div>
         <Conversation :contact="selectedContact" :messages="messages" @new="saveNewMessage"/>
         <ContactsList class="contacts-list flex-row d-none d-md-none d-lg-flex" :contacts="contacts" @selected="startConversationWith"/>
@@ -34,6 +37,7 @@
 <script>
     import Conversation from './Conversation';
     import ContactsList from './ContactsList';
+    import ProfileInfo from './ProfileInfo';
     export default {
         props: {
             user: {
@@ -47,6 +51,7 @@
                 messages: [],
                 contacts: [],
                 showContacts: false,
+                showContactProfile: false,
                 zIndex: 5,
                 opacity: 0.9,
                 color: 'white',
@@ -84,10 +89,13 @@
             },
             toggleForContacts: function() {
                 this.showContacts = !this.showContacts;
-                console.log(this.showContacts);
+                // console.log(this.showContacts);
+            },
+            toggleForContactProfile: function() {
+                this.showContactProfile = !this.showContactProfile;
             },
         },
-        components: {Conversation, ContactsList}
+        components: {Conversation, ContactsList, ProfileInfo}
     }
 </script>
 

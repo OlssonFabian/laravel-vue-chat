@@ -12,9 +12,6 @@
             >
             </v-img>
         </div>
-        <ProfileInfo
-        v-bind:contact="contact"
-        />
     </div>
 </template>
 

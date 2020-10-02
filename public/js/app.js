@@ -1910,6 +1910,7 @@ module.exports = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Conversation__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Conversation */ "./resources/js/components/Conversation.vue");
 /* harmony import */ var _ContactsList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ContactsList */ "./resources/js/components/ContactsList.vue");
+/* harmony import */ var _ProfileInfo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ProfileInfo */ "./resources/js/components/ProfileInfo.vue");
 //
 //
 //
@@ -1943,6 +1944,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1958,6 +1963,7 @@ __webpack_require__.r(__webpack_exports__);
       messages: [],
       contacts: [],
       showContacts: false,
+      showContactProfile: false,
       zIndex: 5,
       opacity: 0.9,
       color: 'white'
@@ -1995,13 +2001,16 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     toggleForContacts: function toggleForContacts() {
-      this.showContacts = !this.showContacts;
-      console.log(this.showContacts);
+      this.showContacts = !this.showContacts; // console.log(this.showContacts);
+    },
+    toggleForContactProfile: function toggleForContactProfile() {
+      this.showContactProfile = !this.showContactProfile;
     }
   },
   components: {
     Conversation: _Conversation__WEBPACK_IMPORTED_MODULE_0__["default"],
-    ContactsList: _ContactsList__WEBPACK_IMPORTED_MODULE_1__["default"]
+    ContactsList: _ContactsList__WEBPACK_IMPORTED_MODULE_1__["default"],
+    ProfileInfo: _ProfileInfo__WEBPACK_IMPORTED_MODULE_2__["default"]
   }
 });
 
@@ -2071,9 +2080,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ProfileInfo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ProfileInfo */ "./resources/js/components/ProfileInfo.vue");
 /* harmony import */ var _MessageComposer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MessageComposer */ "./resources/js/components/MessageComposer.vue");
 /* harmony import */ var _MessageFeed__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MessageFeed */ "./resources/js/components/MessageFeed.vue");
-//
-//
-//
 //
 //
 //
@@ -2249,18 +2255,14 @@ __webpack_require__.r(__webpack_exports__);
     showInfo: function showInfo() {
       console.log(this.contact.name);
     }
-  },
-  mounted: function mounted() {
-    var _this = this;
+  } // mounted() {
+  //     axios.get(`/contact/${contact.id}`).then((response) => {
+  //                 console.log(response.data)
+  //                 this.contact = response.data;
+  //             });
+  // },
+  // components: {ContactsList}
 
-    axios.get("/contact/".concat(contact.id)).then(function (response) {
-      console.log(response.data);
-      _this.contact = response.data;
-    });
-  },
-  components: {
-    ContactsList: _ContactsList__WEBPACK_IMPORTED_MODULE_0__["default"]
-  }
 });
 
 /***/ }),
@@ -45520,7 +45522,7 @@ var render = function() {
                 {
                   staticClass: "selected-contact",
                   attrs: { small: "", elevation: "1" },
-                  on: { click: _vm.toggleForContacts }
+                  on: { click: _vm.toggleForContactProfile }
                 },
                 [
                   _c("v-icon", [_vm._v("mdi-account")]),
@@ -45532,6 +45534,15 @@ var render = function() {
         ],
         1
       ),
+      _vm._v(" "),
+      _vm.showContactProfile
+        ? _c(
+            "div",
+            { staticClass: "contact-profile" },
+            [_c("ProfileInfo", { attrs: { contact: _vm.selectedContact } })],
+            1
+          )
+        : _vm._e(),
       _vm._v(" "),
       _c("Conversation", {
         attrs: { contact: _vm.selectedContact, messages: _vm.messages },
@@ -45733,9 +45744,7 @@ var render = function() {
             ],
             1
           )
-        : _vm._e(),
-      _vm._v(" "),
-      _c("ProfileInfo", { attrs: { contact: _vm.contact } })
+        : _vm._e()
     ],
     1
   )
@@ -45867,9 +45876,12 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "profile-info" }, [
-    _c("button", { on: { click: _vm.showInfo } }, [_vm._v("click Me NOW!")])
-  ])
+  return _c(
+    "div",
+    { staticClass: "profile-info" },
+    [_c("H1", [_vm._v("Hello world")])],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
