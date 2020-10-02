@@ -12,10 +12,14 @@
             >
             </v-img>
         </div>
+        <ProfileInfo
+        v-bind:contact="contact"
+        />
     </div>
 </template>
 
 <script>
+import ProfileInfo from './ProfileInfo';
 import MessageComposer from './MessageComposer';
 import MessageFeed from './MessageFeed';
 
@@ -44,7 +48,7 @@ export default {
             })
         }
     },
-    components: {MessageFeed, MessageComposer}
+    components: {MessageFeed, MessageComposer, ProfileInfo}
 
 }
 </script>
