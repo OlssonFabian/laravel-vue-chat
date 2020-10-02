@@ -3,6 +3,9 @@
         <div class="contact-toggler d-lg-none d-xl-none">
             <v-btn block elevation="2" @click="toggleForContacts">
                 Choose contact
+            </v-btn >
+            <v-btn class="selected-contact" v-if="selectedContact" small elevation="1" @click="toggleForContacts">
+                <v-icon>mdi-account</v-icon> {{selectedContact.name}}
             </v-btn>
         </div>
         <Conversation :contact="selectedContact" :messages="messages" @new="saveNewMessage"/>
@@ -81,7 +84,6 @@
             },
             toggleForContacts: function() {
                 this.showContacts = !this.showContacts;
-                    // some code to filter users
                 console.log(this.showContacts);
             },
         },
@@ -94,6 +96,10 @@
     .contacts-list{
         color: black;
         width: 100vw;
+    }
+    .selected-contact{
+        position: absolute;
+        z-index: 5;
     }
 }
 </style>

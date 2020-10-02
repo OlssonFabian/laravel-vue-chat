@@ -1940,6 +1940,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1992,8 +1995,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     toggleForContacts: function toggleForContacts() {
-      this.showContacts = !this.showContacts; // some code to filter users
-
+      this.showContacts = !this.showContacts;
       console.log(this.showContacts);
     }
   },
@@ -7338,7 +7340,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".chat-app .contacts-list[data-v-1da0bc8e] {\n  color: black;\n  width: 100vw;\n}", ""]);
+exports.push([module.i, ".chat-app .contacts-list[data-v-1da0bc8e] {\n  color: black;\n  width: 100vw;\n}\n.chat-app .selected-contact[data-v-1da0bc8e] {\n  position: absolute;\n  z-index: 5;\n}", ""]);
 
 // exports
 
@@ -45510,7 +45512,23 @@ var render = function() {
               on: { click: _vm.toggleForContacts }
             },
             [_vm._v("\n            Choose contact\n        ")]
-          )
+          ),
+          _vm._v(" "),
+          _vm.selectedContact
+            ? _c(
+                "v-btn",
+                {
+                  staticClass: "selected-contact",
+                  attrs: { small: "", elevation: "1" },
+                  on: { click: _vm.toggleForContacts }
+                },
+                [
+                  _c("v-icon", [_vm._v("mdi-account")]),
+                  _vm._v(" " + _vm._s(_vm.selectedContact.name) + "\n        ")
+                ],
+                1
+              )
+            : _vm._e()
         ],
         1
       ),
