@@ -1951,12 +1951,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  contactProfileToggle: Boolean,
   props: {
     user: {
       type: Object,
       required: true
-    },
-    showContactProfile: false
+    }
   },
   data: function data() {
     return {
@@ -1966,7 +1966,8 @@ __webpack_require__.r(__webpack_exports__);
       showContacts: false,
       zIndex: 5,
       opacity: 0.9,
-      color: 'white'
+      color: 'white',
+      contactProfileToggle: false
     };
   },
   mounted: function mounted() {
@@ -2003,8 +2004,9 @@ __webpack_require__.r(__webpack_exports__);
     toggleForContacts: function toggleForContacts() {
       this.showContacts = !this.showContacts;
     },
-    toggleForContactProfile: function toggleForContactProfile() {
-      this.showContactProfile = !this.showContactProfile;
+    toggleForContactProfile: function toggleForContactProfile(contactProfileToggle) {
+      this.contactProfileToggle = !this.contactProfileToggle;
+      this.$emit("contactProfileToggle", contactProfileToggle);
     }
   },
   components: {
@@ -2265,6 +2267,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+// import ChatAppVue from './ChatApp.vue';
+// chat = new ChatAppVue;
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2272,12 +2276,11 @@ __webpack_require__.r(__webpack_exports__);
       opacity: 1
     };
   },
-  props: {
-    showContactProfile: true
-  },
+  contactProfileToggle: Boolean,
   methods: {
     closeContactProfile: function closeContactProfile() {
-      this.$parent.showContactProfile = !this.$parent.showContactProfile;
+      this.$parent.contactProfileToggle = !this.$parent.contactProfileToggle; //this.contactProfileToggle = false;
+      // this.$emit('closeContactProfile', this.$parent.contactProfileToggle)
     }
   } // mounted() {
   //     axios.get(`/contact/${contact.id}`).then((response) => {
@@ -45559,7 +45562,7 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _vm.showContactProfile
+      _vm.contactProfileToggle
         ? _c(
             "div",
             { staticClass: "contact-profile" },
@@ -45567,8 +45570,9 @@ var render = function() {
               _c("ProfileInfo", {
                 attrs: {
                   contact: _vm.selectedContact,
-                  showContactProfile: true
-                }
+                  contactProfileToggle: _vm.contactProfileToggle
+                },
+                on: { closeContactProfile: _vm.closeContactProfile }
               })
             ],
             1
@@ -45929,7 +45933,7 @@ var render = function() {
                       attrs: {
                         absolute: _vm.absolute,
                         opacity: _vm.opacity,
-                        value: this.$parent.showContactProfile
+                        value: this.$parent.contactProfileToggle
                       }
                     },
                     [

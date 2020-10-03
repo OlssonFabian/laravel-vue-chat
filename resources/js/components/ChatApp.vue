@@ -8,8 +8,8 @@
                 <v-icon>mdi-account</v-icon> {{selectedContact.name}}
             </v-btn>
         </div>
-        <div v-if="showContactProfile" class="contact-profile">
-            <ProfileInfo :contact="selectedContact" :showContactProfile="true" />
+        <div v-if="contactProfileToggle" class="contact-profile">
+            <ProfileInfo :contact="selectedContact" :contactProfileToggle="contactProfileToggle" @closeContactProfile="closeContactProfile"/>
         </div>
         <Conversation :contact="selectedContact" :messages="messages" @new="saveNewMessage"/>
         <ContactsList class="contacts-list flex-row d-none d-md-none d-lg-flex" :contacts="contacts" @selected="startConversationWith"/>
@@ -39,12 +39,12 @@
     import ContactsList from './ContactsList';
     import ProfileInfo from './ProfileInfo';
     export default {
+        contactProfileToggle: Boolean,
         props: {
             user: {
                 type: Object,
                 required: true
             },
-            showContactProfile: false,
 
         },
         data() {
@@ -56,6 +56,7 @@
                 zIndex: 5,
                 opacity: 0.9,
                 color: 'white',
+                contactProfileToggle: false,
             };
         },
         mounted() {
@@ -91,9 +92,11 @@
             toggleForContacts: function() {
                 this.showContacts = !this.showContacts;
             },
-            toggleForContactProfile: function() {
-                this.showContactProfile = !this.showContactProfile;
+            toggleForContactProfile: function(contactProfileToggle) {
+                this.contactProfileToggle = !this.contactProfileToggle;
+                this.$emit("contactProfileToggle", contactProfileToggle);
             },
+
         },
         components: {Conversation, ContactsList, ProfileInfo}
     }

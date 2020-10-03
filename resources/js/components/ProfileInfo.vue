@@ -12,7 +12,7 @@
                     <v-overlay
                         :absolute="absolute"
                         :opacity="opacity"
-                        :value="this.$parent.showContactProfile"
+                        :value="this.$parent.contactProfileToggle"
                     >
                 <v-btn
                     color="orange lighten-2"
@@ -28,17 +28,21 @@
 </template>
 
 <script>
+// import ChatAppVue from './ChatApp.vue';
+// chat = new ChatAppVue;
+
 export default {
     data: () => ({
         absolute: true,
         opacity: 1,
     }),
-    props: {
-        showContactProfile: true,
-    },
+    contactProfileToggle: Boolean,
+
     methods: {
         closeContactProfile(){
-            this.$parent.showContactProfile = !this.$parent.showContactProfile;
+            this.$parent.contactProfileToggle = !this.$parent.contactProfileToggle;
+            //this.contactProfileToggle = false;
+            // this.$emit('closeContactProfile', this.$parent.contactProfileToggle)
         }
     },
     // mounted() {
