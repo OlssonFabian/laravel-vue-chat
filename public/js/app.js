@@ -1955,7 +1955,8 @@ __webpack_require__.r(__webpack_exports__);
     user: {
       type: Object,
       required: true
-    }
+    },
+    showContactProfile: false
   },
   data: function data() {
     return {
@@ -1963,7 +1964,6 @@ __webpack_require__.r(__webpack_exports__);
       messages: [],
       contacts: [],
       showContacts: false,
-      showContactProfile: false,
       zIndex: 5,
       opacity: 0.9,
       color: 'white'
@@ -2001,7 +2001,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     toggleForContacts: function toggleForContacts() {
-      this.showContacts = !this.showContacts; // console.log(this.showContacts);
+      this.showContacts = !this.showContacts;
     },
     toggleForContactProfile: function toggleForContactProfile() {
       this.showContactProfile = !this.showContactProfile;
@@ -2236,24 +2236,48 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _ContactsList__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ContactsList */ "./resources/js/components/ContactsList.vue");
 //
 //
 //
 //
 //
 //
-
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      absolute: true,
+      opacity: 1
+    };
+  },
   props: {
-    contact: {
-      type: Object,
-      "default": null
-    }
+    showContactProfile: true
   },
   methods: {
-    showInfo: function showInfo() {
-      console.log(this.contact.name);
+    closeContactProfile: function closeContactProfile() {
+      this.$parent.showContactProfile = !this.$parent.showContactProfile;
     }
   } // mounted() {
   //     axios.get(`/contact/${contact.id}`).then((response) => {
@@ -45539,7 +45563,14 @@ var render = function() {
         ? _c(
             "div",
             { staticClass: "contact-profile" },
-            [_c("ProfileInfo", { attrs: { contact: _vm.selectedContact } })],
+            [
+              _c("ProfileInfo", {
+                attrs: {
+                  contact: _vm.selectedContact,
+                  showContactProfile: true
+                }
+              })
+            ],
             1
           )
         : _vm._e(),
@@ -45879,7 +45910,50 @@ var render = function() {
   return _c(
     "div",
     { staticClass: "profile-info" },
-    [_c("H1", [_vm._v("Hello world")])],
+    [
+      _c(
+        "v-row",
+        { attrs: { align: "center", justify: "center" } },
+        [
+          _c(
+            "v-card",
+            { attrs: { height: "300", width: "250" } },
+            [
+              _c(
+                "v-row",
+                { attrs: { justify: "center" } },
+                [
+                  _c(
+                    "v-overlay",
+                    {
+                      attrs: {
+                        absolute: _vm.absolute,
+                        opacity: _vm.opacity,
+                        value: this.$parent.showContactProfile
+                      }
+                    },
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: { color: "orange lighten-2" },
+                          on: { click: _vm.closeContactProfile }
+                        },
+                        [_vm._v("\n                Hide Overlay\n            ")]
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
     1
   )
 }

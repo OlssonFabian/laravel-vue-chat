@@ -9,7 +9,7 @@
             </v-btn>
         </div>
         <div v-if="showContactProfile" class="contact-profile">
-            <ProfileInfo :contact="selectedContact" />
+            <ProfileInfo :contact="selectedContact" :showContactProfile="true" />
         </div>
         <Conversation :contact="selectedContact" :messages="messages" @new="saveNewMessage"/>
         <ContactsList class="contacts-list flex-row d-none d-md-none d-lg-flex" :contacts="contacts" @selected="startConversationWith"/>
@@ -43,7 +43,9 @@
             user: {
                 type: Object,
                 required: true
-            }
+            },
+            showContactProfile: false,
+
         },
         data() {
             return {
@@ -51,7 +53,6 @@
                 messages: [],
                 contacts: [],
                 showContacts: false,
-                showContactProfile: false,
                 zIndex: 5,
                 opacity: 0.9,
                 color: 'white',
@@ -89,7 +90,6 @@
             },
             toggleForContacts: function() {
                 this.showContacts = !this.showContacts;
-                // console.log(this.showContacts);
             },
             toggleForContactProfile: function() {
                 this.showContactProfile = !this.showContactProfile;

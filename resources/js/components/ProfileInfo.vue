@@ -1,21 +1,44 @@
 <template>
     <div class="profile-info">
-        <H1>Hello world</H1>
+        <v-row
+        align="center"
+        justify="center"
+        >
+            <v-card
+            height="300"
+            width="250"
+            >
+                <v-row justify="center">
+                    <v-overlay
+                        :absolute="absolute"
+                        :opacity="opacity"
+                        :value="this.$parent.showContactProfile"
+                    >
+                <v-btn
+                    color="orange lighten-2"
+                    @click="closeContactProfile"
+                >
+                    Hide Overlay
+                </v-btn>
+                    </v-overlay>
+                </v-row>
+            </v-card>
+        </v-row>
     </div>
 </template>
 
 <script>
-import ContactsList from './ContactsList';
 export default {
+    data: () => ({
+        absolute: true,
+        opacity: 1,
+    }),
     props: {
-        contact: {
-            type: Object,
-            default: null
-        },
+        showContactProfile: true,
     },
     methods: {
-        showInfo(){
-            console.log(this.contact.name)
+        closeContactProfile(){
+            this.$parent.showContactProfile = !this.$parent.showContactProfile;
         }
     },
     // mounted() {
