@@ -27,6 +27,12 @@
                     :value="overlay"
                     :z-index="zIndex"
                     >
+                    <h1>{{contact.name}}</h1>
+                    <h3 italic>{{contact.company}}</h3>
+                    <span v-for="value in contact.rating" v-bind:key="value">
+                            <v-icon size=20 color="yellow" >mdi-star</v-icon>
+                        </span>
+                    <p>{{contact.about}}</p>
                     </v-overlay>
                 </v-row>
             </v-card>
@@ -35,6 +41,12 @@
 
 <script>
 export default {
+    props: {
+        contact: {
+            type: Object,
+            default: null
+        }
+    },
     data: () => ({
         absolute: true,
         opacity: 1,

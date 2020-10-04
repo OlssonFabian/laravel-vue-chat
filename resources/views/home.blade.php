@@ -5,7 +5,6 @@
     <div class="row justify-content-center">
         <div class="col-sm-12">
             <div class="card">
-                <div class="card-header">{{ __('Fab Messenger') }}</div>
                     <v-app>
                         <chat-app :user="{{ auth()->user()}}"></chat-app>
                     </v-app>

@@ -2154,6 +2154,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    contact: {
+      type: Array,
+      "default": []
+    }
+  },
   data: function data() {
     return {
       message: ''
@@ -2273,7 +2279,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    contact: {
+      type: Object,
+      "default": null
+    }
+  },
   data: function data() {
     return {
       absolute: true,
@@ -45707,7 +45725,10 @@ var render = function() {
         attrs: { contact: _vm.contact, messages: _vm.messages }
       }),
       _vm._v(" "),
-      _c("messageComposer", { on: { send: _vm.sendMessage } }),
+      _c("messageComposer", {
+        attrs: { contact: _vm.contact },
+        on: { send: _vm.sendMessage }
+      }),
       _vm._v(" "),
       _vm.contact && !this.$parent.contactProfileToggle
         ? _c(
@@ -45753,37 +45774,39 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "composer" }, [
-    _c("textarea", {
-      directives: [
-        {
-          name: "model",
-          rawName: "v-model",
-          value: _vm.message,
-          expression: "message"
-        }
-      ],
-      attrs: { placeholder: "Message ..." },
-      domProps: { value: _vm.message },
-      on: {
-        keydown: function($event) {
-          if (
-            !$event.type.indexOf("key") &&
-            _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-          ) {
-            return null
+  return _vm.contact
+    ? _c("div", { staticClass: "composer" }, [
+        _c("textarea", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.message,
+              expression: "message"
+            }
+          ],
+          attrs: { placeholder: "Message ..." },
+          domProps: { value: _vm.message },
+          on: {
+            keydown: function($event) {
+              if (
+                !$event.type.indexOf("key") &&
+                _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+              ) {
+                return null
+              }
+              return _vm.send($event)
+            },
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.message = $event.target.value
+            }
           }
-          return _vm.send($event)
-        },
-        input: function($event) {
-          if ($event.target.composing) {
-            return
-          }
-          _vm.message = $event.target.value
-        }
-      }
-    })
-  ])
+        })
+      ])
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -45889,13 +45912,41 @@ var render = function() {
             "v-row",
             { attrs: { justify: "center" } },
             [
-              _c("v-overlay", {
-                attrs: {
-                  absolute: _vm.absolute,
-                  value: _vm.overlay,
-                  "z-index": _vm.zIndex
-                }
-              })
+              _c(
+                "v-overlay",
+                {
+                  attrs: {
+                    absolute: _vm.absolute,
+                    value: _vm.overlay,
+                    "z-index": _vm.zIndex
+                  }
+                },
+                [
+                  _c("h1", [_vm._v(_vm._s(_vm.contact.name))]),
+                  _vm._v(" "),
+                  _c("h3", { attrs: { italic: "" } }, [
+                    _vm._v(_vm._s(_vm.contact.company))
+                  ]),
+                  _vm._v(" "),
+                  _vm._l(_vm.contact.rating, function(value) {
+                    return _c(
+                      "span",
+                      { key: value },
+                      [
+                        _c(
+                          "v-icon",
+                          { attrs: { size: "20", color: "yellow" } },
+                          [_vm._v("mdi-star")]
+                        )
+                      ],
+                      1
+                    )
+                  }),
+                  _vm._v(" "),
+                  _c("p", [_vm._v(_vm._s(_vm.contact.about))])
+                ],
+                2
+              )
             ],
             1
           )
