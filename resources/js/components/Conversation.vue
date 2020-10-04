@@ -2,8 +2,8 @@
     <div class="conversation">
         <h1 class="d-none d-md-flex d-lg-flex"> {{ contact ? contact.name: 'Select a Contact' }}</h1>
         <messageFeed :contact="contact" :messages="messages"/>
-        <messageComposer @send="sendMessage" />
-        <div class="avatar d-lg-none" v-if="contact">
+        <messageComposer @send="sendMessage" :contact="contact" />
+        <div class="avatar d-lg-none" v-if="contact && !this.$parent.contactProfileToggle">
             <v-img max-height="80"
                     max-width="80"
                     :src="contact.profile_picture"
@@ -16,6 +16,7 @@
 </template>
 
 <script>
+import ProfileInfo from './ProfileInfo';
 import MessageComposer from './MessageComposer';
 import MessageFeed from './MessageFeed';
 
@@ -44,7 +45,7 @@ export default {
             })
         }
     },
-    components: {MessageFeed, MessageComposer}
+    components: {MessageFeed, MessageComposer, ProfileInfo}
 
 }
 </script>

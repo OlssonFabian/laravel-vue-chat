@@ -16,6 +16,12 @@ class ContactsController extends Controller
         return response()->json($contacts);
     }
 
+    public function getContactInfo($id){
+        $contact = user::where('id', $id)->get();
+
+        return response()->json($contact);
+    }
+
     public function getMessagesFor($id){
         $messages = Message::where('from', $id)->orWhere('to', $id)->get();
 

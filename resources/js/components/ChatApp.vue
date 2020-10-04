@@ -3,7 +3,13 @@
         <div class="contact-toggler d-lg-none d-xl-none">
             <v-btn block elevation="2" @click="toggleForContacts">
                 Choose contact
+            </v-btn >
+            <v-btn class="selected-contact" v-if="selectedContact && !contactProfileToggle" small elevation="1" @click="toggleForContactProfile">
+                <v-icon>mdi-account</v-icon> {{selectedContact.name}}
             </v-btn>
+        </div>
+        <div v-if="contactProfileToggle" class="contact-profile">
+            <ProfileInfo :contact="selectedContact"/>
         </div>
         <Conversation :contact="selectedContact" :messages="messages" @new="saveNewMessage"/>
         <ContactsList class="contacts-list flex-row d-none d-md-none d-lg-flex" :contacts="contacts" @selected="startConversationWith"/>
@@ -31,12 +37,15 @@
 <script>
     import Conversation from './Conversation';
     import ContactsList from './ContactsList';
+    import ProfileInfo from './ProfileInfo';
     export default {
+        contactProfileToggle: Boolean,
         props: {
             user: {
                 type: Object,
                 required: true
-            }
+            },
+
         },
         data() {
             return {
@@ -47,6 +56,7 @@
                 zIndex: 5,
                 opacity: 0.9,
                 color: 'white',
+                contactProfileToggle: false,
             };
         },
         mounted() {
@@ -81,11 +91,14 @@
             },
             toggleForContacts: function() {
                 this.showContacts = !this.showContacts;
-                    // some code to filter users
-                console.log(this.showContacts);
             },
+            toggleForContactProfile: function(contactProfileToggle) {
+                this.contactProfileToggle = !this.contactProfileToggle;
+                this.$emit("contactProfileToggle", contactProfileToggle);
+            },
+
         },
-        components: {Conversation, ContactsList}
+        components: {Conversation, ContactsList, ProfileInfo}
     }
 </script>
 
@@ -94,6 +107,10 @@
     .contacts-list{
         color: black;
         width: 100vw;
+    }
+    .selected-contact{
+        position: absolute;
+        z-index: 5;
     }
 }
 </style>

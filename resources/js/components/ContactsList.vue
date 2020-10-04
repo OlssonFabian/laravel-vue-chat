@@ -6,8 +6,12 @@
                     <img :src="contact.profile_picture" alt="contact.name">
                 </div>
                 <div class="contact">
-                    <p class="name"> {{ contact.name }}</p>
+                    <p class="name"> {{ contact.name }}
+                        <span v-for="value in contact.rating" v-bind:key="value">
+                            <v-icon size=15 color="yellow" >mdi-star</v-icon>
+                        </span></p>
                     <p class="email">{{ contact.email }}</p>
+                    <p class="company">@{{ contact.company }}</p>
                 </div>
             </li>
         </ul>
@@ -20,11 +24,12 @@ export default {
         contacts: {
             type: Array,
             default: []
-        }
+        },
     },
     data(){
         return {
-            selected: 0
+            selected: 0,
+            showContacts: false,
         };
     },
     methods: {
