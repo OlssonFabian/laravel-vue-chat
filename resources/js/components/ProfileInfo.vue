@@ -28,9 +28,6 @@
 </template>
 
 <script>
-// import ChatAppVue from './ChatApp.vue';
-// chat = new ChatAppVue;
-
 export default {
     data: () => ({
         absolute: true,
@@ -41,8 +38,6 @@ export default {
     methods: {
         closeContactProfile(){
             this.$parent.contactProfileToggle = !this.$parent.contactProfileToggle;
-            //this.contactProfileToggle = false;
-            // this.$emit('closeContactProfile', this.$parent.contactProfileToggle)
         }
     },
     // mounted() {

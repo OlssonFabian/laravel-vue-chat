@@ -9,7 +9,7 @@
             </v-btn>
         </div>
         <div v-if="contactProfileToggle" class="contact-profile">
-            <ProfileInfo :contact="selectedContact" :contactProfileToggle="contactProfileToggle" @closeContactProfile="closeContactProfile"/>
+            <ProfileInfo :contact="selectedContact"/>
         </div>
         <Conversation :contact="selectedContact" :messages="messages" @new="saveNewMessage"/>
         <ContactsList class="contacts-list flex-row d-none d-md-none d-lg-flex" :contacts="contacts" @selected="startConversationWith"/>

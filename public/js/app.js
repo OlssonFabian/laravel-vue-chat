@@ -2267,8 +2267,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-// import ChatAppVue from './ChatApp.vue';
-// chat = new ChatAppVue;
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2279,8 +2277,7 @@ __webpack_require__.r(__webpack_exports__);
   contactProfileToggle: Boolean,
   methods: {
     closeContactProfile: function closeContactProfile() {
-      this.$parent.contactProfileToggle = !this.$parent.contactProfileToggle; //this.contactProfileToggle = false;
-      // this.$emit('closeContactProfile', this.$parent.contactProfileToggle)
+      this.$parent.contactProfileToggle = !this.$parent.contactProfileToggle;
     }
   } // mounted() {
   //     axios.get(`/contact/${contact.id}`).then((response) => {
@@ -45566,15 +45563,7 @@ var render = function() {
         ? _c(
             "div",
             { staticClass: "contact-profile" },
-            [
-              _c("ProfileInfo", {
-                attrs: {
-                  contact: _vm.selectedContact,
-                  contactProfileToggle: _vm.contactProfileToggle
-                },
-                on: { closeContactProfile: _vm.closeContactProfile }
-              })
-            ],
+            [_c("ProfileInfo", { attrs: { contact: _vm.selectedContact } })],
             1
           )
         : _vm._e(),
