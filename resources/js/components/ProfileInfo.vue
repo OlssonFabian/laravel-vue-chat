@@ -1,30 +1,36 @@
 <template>
-    <div class="profile-info">
         <v-row
+        absolute
         align="center"
         justify="center"
         >
+                        <v-btn
+                            color="error"
+                            :z-index="zIndex + 1"
+                            fab
+                            medium
+                            dark
+                            left
+                            top
+                            absolute
+                            @click="closeContactProfile"
+                            >
+                            <v-icon>mdi-close</v-icon>
+                        </v-btn>
             <v-card
-            height="300"
-            width="250"
+            height="40vh"
+            width="90vw"
             >
                 <v-row justify="center">
                     <v-overlay
-                        :absolute="absolute"
-                        :opacity="opacity"
-                        :value="this.$parent.contactProfileToggle"
+                    :absolute="absolute"
+                    :value="overlay"
+                    :z-index="zIndex"
                     >
-                <v-btn
-                    color="orange lighten-2"
-                    @click="closeContactProfile"
-                >
-                    Hide Overlay
-                </v-btn>
                     </v-overlay>
                 </v-row>
             </v-card>
         </v-row>
-    </div>
 </template>
 
 <script>
@@ -32,6 +38,7 @@ export default {
     data: () => ({
         absolute: true,
         opacity: 1,
+        zIndex: 100,
     }),
     contactProfileToggle: Boolean,
 
@@ -50,7 +57,5 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.profile-info {
 
-}
 </style>

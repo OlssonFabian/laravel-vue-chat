@@ -4,7 +4,7 @@
             <v-btn block elevation="2" @click="toggleForContacts">
                 Choose contact
             </v-btn >
-            <v-btn class="selected-contact" v-if="selectedContact" small elevation="1" @click="toggleForContactProfile">
+            <v-btn class="selected-contact" v-if="selectedContact && !contactProfileToggle" small elevation="1" @click="toggleForContactProfile">
                 <v-icon>mdi-account</v-icon> {{selectedContact.name}}
             </v-btn>
         </div>
